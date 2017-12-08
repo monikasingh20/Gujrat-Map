@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	<title>MAP OF GUJRAT</title>
+	
+	<link rel="stylesheet" href="css/mapstyle.css">
+	
+	<script src="javascript/javascript.js"></script>
+	
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+	
+	<script src="javascript/knockout-3.4.2.js"></script>
+	
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA4c6JJ_4QEPlyz-DDPTTzhgP3OmAJyJ9g&callback=initMap"
+		onerror="mapError()" async defer></script> 
+
+</head>
+
+<body>
+
+<!-- Page Content -->
+<div class="container">
+	<div>
+		<button data-bind="click:w3_open()">☰</button>
+	</div>
+
+<!--Sidebar having list of all places in gujrat, and option for search location-->
+<div id="mySidebar">
+	<button  data-bind="click: w3_close()">&times;</button>
+	<div class="option-box">
+        <div>
+			<h1>Search Location in Gujrat</h1>
+			<input class="filter-in" type="text" data-bind="value:list,valueUpdate: 'afterkeydown'" placeholder="Enter the place">
+            <div>
+				<button data-bind="click:myFunction()">Show-list</button>
+				<button data-bind="click:myFunction1()">Hide-list</button>
+			</div>
+			<div id="myDIV">
+				<ol  data-bind="foreach:markers()">
+					<li data-bind="click: $parent.itemClicked.bind($data, index)"><a href="" data-bind="text:title"></a></li>
+				</ol>
+			</div>
+		</div>
+    </div>
+</div>
+
+<!--show map-->
+<div class="map-container" id="map"></div>
+</div>        
+
+</body>
+</html>
